@@ -57,12 +57,7 @@ public class DietaComida {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "DietaComida{" + "idDietaComida=" + idDietaComida + ", idComida=" + idComida + ", idDieta=" + idDieta + ", estado=" + estado + '}';
-    }
-   
-   
+  
    
     
 }
