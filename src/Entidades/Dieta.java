@@ -2,21 +2,22 @@
 package Entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Dieta {
    private int idDieta;
    private String nombre;
    private Paciente idPaciente;
-   private Date fechaInicial;
+   private LocalDate fechaInicial;
    private double pesoInicial;
    private double pesoFinal;
-   private Date fechaFinal;
+   private LocalDate fechaFinal;
    private boolean estado;
 
     public Dieta() {
     }
 
-    public Dieta(int idDieta, String nombre, Paciente idPaciente, Date fechaInicial, double pesoInicial, double pesoFinal, Date fechaFinal, boolean estado) {
+    public Dieta(int idDieta, String nombre, Paciente idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, boolean estado) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.idPaciente = idPaciente;
@@ -27,7 +28,7 @@ public class Dieta {
         this.estado = estado;
     }
 
-    public Dieta(String nombre, Paciente idPaciente, Date fechaInicial, double pesoInicial, double pesoFinal, Date fechaFinal, boolean estado) {
+    public Dieta(String nombre, Paciente idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, boolean estado) {
         this.nombre = nombre;
         this.idPaciente = idPaciente;
         this.fechaInicial = fechaInicial;
@@ -61,11 +62,11 @@ public class Dieta {
         this.idPaciente = idPaciente;
     }
 
-    public Date getFechaInicial() {
+    public LocalDate getFechaInicial() {
         return fechaInicial;
     }
 
-    public void setFechaInicial(Date fechaInicial) {
+    public void setFechaInicial(LocalDate fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
@@ -85,11 +86,11 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public Date getFechaFinal() {
+    public LocalDate getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 

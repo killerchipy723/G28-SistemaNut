@@ -5,18 +5,18 @@ package Entidades;
 public class DietaComida {
     
    private int idDietaComida;
-   private Comidas idComida;
+   private Comida idComida;
    private Dieta idDieta;
    private boolean estado;
 
-    public DietaComida(int idDietaComida, Comidas idComida, Dieta idDieta, boolean estado) {
+    public DietaComida(int idDietaComida, Comida idComida, Dieta idDieta, boolean estado) {
         this.idDietaComida = idDietaComida;
         this.idComida = idComida;
         this.idDieta = idDieta;
         this.estado = estado;
     }
 
-    public DietaComida(Comidas idComida, Dieta idDieta, boolean estado) {
+    public DietaComida(Comida idComida, Dieta idDieta, boolean estado) {
         this.idComida = idComida;
         this.idDieta = idDieta;
         this.estado = estado;
@@ -33,11 +33,11 @@ public class DietaComida {
         this.idDietaComida = idDietaComida;
     }
 
-    public Comidas getIdComida() {
+    public Comida getIdComida() {
         return idComida;
     }
 
-    public void setIdComida(Comidas idComida) {
+    public void setIdComida(Comida idComida) {
         this.idComida = idComida;
     }
 

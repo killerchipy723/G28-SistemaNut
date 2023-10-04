@@ -2,17 +2,17 @@
 package Entidades;
 
 
-public class Comidas {
+public class Comida {
    private int idComida;
    private String nombre;
    private String detalle;
    private int cantCalorias;
    private boolean estado;
 
-    public Comidas() {
+    public Comida() {
     }
 
-    public Comidas(String nombre, String detalle, int cantCalorias, boolean estado) {
+    public Comida(String nombre, String detalle, int cantCalorias, boolean estado) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
