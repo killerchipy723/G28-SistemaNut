@@ -19,6 +19,15 @@ public class Comida {
         this.estado = estado;
     }
 
+    public Comida(int idComida, String nombre, String detalle, int cantCalorias, boolean estado) {
+        this.idComida = idComida;
+        this.nombre = nombre;
+        this.detalle = detalle;
+        this.cantCalorias = cantCalorias;
+        this.estado = estado;
+    }
+    
+
     public int getIdComida() {
         return idComida;
     }

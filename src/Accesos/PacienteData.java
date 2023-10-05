@@ -97,7 +97,7 @@ public class PacienteData {
        return listaPac;
    }
    public void modificarPaciente (Paciente pac){
-       String sql ="UPDATE paciente SET dni="+pac.getDni()+",apellido="+pac.getApellido()+",nombre="+pac.getNombre()+",domicilio="+pac.getDomicilio()+",telefono="+pac.getTelefono()+",estado="+pac.getEstado()+" WHERE idPaciente=?";
+       String sql ="UPDATE paciente SET dni=?,apellido=?,nombre=?,domicilio=?,telefono=?,estado=? WHERE idPaciente=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, pac.getDni());
@@ -106,6 +106,7 @@ public class PacienteData {
             ps.setString(4, pac.getDomicilio());
             ps.setString(5, pac.getTelefono());
             ps.setBoolean(6, true);
+            ps.setInt(7, pac.getIdPaciente());
             int exito= ps.executeUpdate();
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "se modifico el paciente");

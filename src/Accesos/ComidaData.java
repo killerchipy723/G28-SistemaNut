@@ -41,8 +41,7 @@ public class ComidaData {
     }
     
     public void ModificarComida(Comida com){
-        String sql="UPDATE comida SET nombre="+com.getNombre()+",detalle="+com.getDetalle()+",cantCalorias="+com.getCantCalorias()+
-                ",estado="+com.isEstado()+"WHERE idComida=?";
+        String sql="UPDATE comida SET nombre=?,detalle=?,cantCalorias=?,estado=? WHERE idComida=?";
         
         try {
             PreparedStatement ps= con.prepareStatement(sql);
@@ -50,6 +49,7 @@ public class ComidaData {
             ps.setString (2, com.getDetalle());
             ps.setInt(3, com.getCantCalorias());
             ps.setBoolean(4, true);
+            ps.setInt(5, com.getIdComida());
             int exito= ps.executeUpdate();
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "se modifico correctamente");
