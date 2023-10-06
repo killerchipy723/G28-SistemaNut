@@ -1,12 +1,16 @@
 
 package Interfaces;
 
+import Accesos.UsuarioData;
+import java.awt.Color;
+
 
 public class Login extends javax.swing.JFrame {
 
    
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -14,6 +18,8 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        jpCerrar = new javax.swing.JPanel();
+        txtCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -35,6 +41,39 @@ public class Login extends javax.swing.JFrame {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jpCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCerrarMouseEntered(evt);
+            }
+        });
+
+        txtCerrar.setBackground(new java.awt.Color(0, 204, 204));
+        txtCerrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtCerrar.setText("X");
+        txtCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCerrarMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpCerrarLayout = new javax.swing.GroupLayout(jpCerrar);
+        jpCerrar.setLayout(jpCerrarLayout);
+        jpCerrarLayout.setHorizontalGroup(
+            jpCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        jpCerrarLayout.setVerticalGroup(
+            jpCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        bg.add(jpCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 30, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salud.jpg"))); // NOI18N
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 160, 370));
 
@@ -47,8 +86,6 @@ public class Login extends javax.swing.JFrame {
         bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtUsuario.setText("ingrese su nombre de usuario");
         txtUsuario.setBorder(null);
         bg.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 320, 30));
         bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 320, 10));
@@ -58,8 +95,6 @@ public class Login extends javax.swing.JFrame {
         bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 320, 10));
 
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +117,11 @@ public class Login extends javax.swing.JFrame {
         jLabel8.setText("                        ENTRAR");
         jLabel8.setAlignmentY(0.0F);
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,6 +153,25 @@ public class Login extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void txtCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseEntered
+       txtCerrar.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtCerrarMouseEntered
+
+    private void txtCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseClicked
+     System.exit(0);
+    }//GEN-LAST:event_txtCerrarMouseClicked
+
+    private void jpCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseEntered
+        jpCerrar.setBackground(Color.yellow);
+    }//GEN-LAST:event_jpCerrarMouseEntered
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        UsuarioData ud = new UsuarioData();      
+        ud.validar(txtUsuario, jPasswordField1);
+        new formPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -162,6 +221,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel jpCerrar;
+    private javax.swing.JLabel txtCerrar;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
