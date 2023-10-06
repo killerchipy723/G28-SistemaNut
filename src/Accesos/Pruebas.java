@@ -29,7 +29,7 @@ public class Pruebas {
         
         //puebas clase comidaData
 //         Comida com1= new Comida("Pollo","pechuga a la plancha", 350, true);
-        ComidaData cd = new ComidaData();
+        //ComidaData cd = new ComidaData();
 //
 //        Comida com2 = new Comida("Manzana", "manzana verde", 52, true);
 //     Comida com3=new Comida("Granola","mix de granos",471,true);
@@ -51,6 +51,7 @@ public class Pruebas {
         DietaData dd= new DietaData();
         Paciente susana= pd.buscarPacientexDni(23675432);
         Dieta luna=new Dieta("dieta de la luna",susana,LocalDate.of(2023, 10, 5),99.0,85.5,LocalDate.of(2024, 3, 10),true);
-        dd.cargarDieta(luna);
+        //dd.cargarDieta(luna);
+        System.out.println(dd.buscardietaPorNombre(" luna"));
     }
 }
