@@ -155,11 +155,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void txtCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseEntered
-       txtCerrar.setBackground(Color.yellow);
+        txtCerrar.setBackground(Color.yellow);
     }//GEN-LAST:event_txtCerrarMouseEntered
 
     private void txtCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseClicked
-     System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_txtCerrarMouseClicked
 
     private void jpCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseEntered
@@ -167,7 +167,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCerrarMouseEntered
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        UsuarioData ud = new UsuarioData();      
+        UsuarioData ud = new UsuarioData();
         ud.validar(txtUsuario, jPasswordField1);
         new formPrincipal().setVisible(true);
         this.dispose();

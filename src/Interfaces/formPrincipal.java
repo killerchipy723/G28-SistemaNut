@@ -63,7 +63,7 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Comidas", jPanel3);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 670, 380));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 670, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
