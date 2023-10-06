@@ -1,8 +1,17 @@
 
 package Interfaces;
 
+import Accesos.Conexion;
 import Accesos.UsuarioData;
+import Entidades.Usuario;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 
 public class Login extends javax.swing.JFrame {
@@ -27,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -95,13 +104,13 @@ public class Login extends javax.swing.JFrame {
         bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 320, 10));
 
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtPass.setBorder(null);
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtPassActionPerformed(evt);
             }
         });
-        bg.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 320, 30));
+        bg.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 320, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.jpg"))); // NOI18N
         bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 70));
@@ -150,9 +159,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtPassActionPerformed
 
     private void txtCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseEntered
         txtCerrar.setBackground(Color.yellow);
@@ -168,9 +177,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         UsuarioData ud = new UsuarioData();
-        ud.validar(txtUsuario, jPasswordField1);
-        new formPrincipal().setVisible(true);
-        this.dispose();
+       validar();
+//         
+        
     }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
@@ -207,6 +216,30 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
+    public void validar(){
+        Connection con = Conexion.Conectar();
+        Usuario user = new Usuario();
+       String sql = "SELECT usuario,clave FROM usuarios WHERE usuario =? AND clave = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1,txtUsuario.getText());
+            pst.setString(2,String.valueOf(txtPass.getPassword()));
+            ResultSet rs =pst.executeQuery();
+            if(rs.next()){
+              JOptionPane.showMessageDialog(null,  "Acceso Correcto");            
+              new formPrincipal().setVisible(true);              
+              
+             this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null,  "No se esncotro ningun usuario con los datos ingresados ");
+               txtUsuario.setText("");
+               txtPass.setText("");
+               txtUsuario.requestFocus();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,  "Error al conectar a la tabla Usuarios "+ex);
+                    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
@@ -218,11 +251,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JLabel txtCerrar;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txtPass;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
