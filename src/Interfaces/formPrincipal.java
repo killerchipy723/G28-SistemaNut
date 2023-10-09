@@ -114,8 +114,8 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addComponent(txtNombre)
                         .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(154, Short.MAX_VALUE))
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +295,7 @@ public class formPrincipal extends javax.swing.JFrame {
         String estado = (String) comboEstado.getSelectedItem();
         System.out.println(""+estado);
    
-        System.out.println(""+state);
+    
          String sql = "INSERT INTO paciente(dni,apellido,nombre,domicilio,telefono,estado) VALUES (?,?,?,?,?,?)";   
         try {
                if(estado == "Activo"){
@@ -324,6 +324,7 @@ public class formPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Error al Conectar a la Tabla Paciente "+ ex.toString());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,"Error, Campos Vacios o formato incorrecto");
+            limpiar();
             
         }
     }
