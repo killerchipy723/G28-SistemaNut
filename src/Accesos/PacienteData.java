@@ -115,7 +115,7 @@ public class PacienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(PacienteData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla paciente");
         }
    }
      public void darDeBaja (int id){

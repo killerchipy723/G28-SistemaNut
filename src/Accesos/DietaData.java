@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -80,8 +79,34 @@ return dieta;
         
         
     }
+   
     
-    
-    
-    
+    public void modificarDieta(Dieta dieta){
+        String sql="UPDATE dieta SET nombre=?, idPaciente=?, fechaInicial=?, pesoInicial=?, pesoFinal=?, fechaFinal=?, estado=? WHERE idDieta=?";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1, dieta.getNombre());
+            ps.setInt(2, dieta.getIdPaciente().getIdPaciente());
+            ps.setDate(3, Date.valueOf(dieta.getFechaInicial()));
+            ps.setDouble(4, dieta.getPesoInicial());
+            ps.setDouble(5, dieta.getPesoFinal());
+            ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));
+            ps.setBoolean(7, true);
+            ps.setInt(8, dieta.getIdDieta());
+            
+            int exito= ps.executeUpdate();
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "la dieta se modifico");
+            }else{
+                JOptionPane.showMessageDialog(null, "no se encontro la dieta");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla dieta");
+        }
+        
+        
+    }
+            
 }
