@@ -29,16 +29,29 @@ public class formPrincipal extends javax.swing.JFrame {
     public formPrincipal() {
         initComponents();
         mostrarFecha();
+        txtApellido.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtDomicilio.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        comboEstado.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        
+        txtDni.requestFocus();
     
    
-      
+        iniCombo();
         setLocationRelativeTo(null);
         Login lg = new Login();
         lg.setVisible(false);
+        
+    }
+    public void iniCombo(){
         comboEstado.addItem("Seleccione el estado del Paciente");
         comboEstado.addItem("Activo");
-         comboEstado.addItem("Inactivo");
-         comboEstado.setSelectedItem("Seleccione el estado del Paciente");
+        comboEstado.addItem("Inactivo");
+        comboEstado.setSelectedItem("Seleccione el estado del Paciente");
     }
 
     /**
@@ -68,10 +81,10 @@ public class formPrincipal extends javax.swing.JFrame {
         comboEstado = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
@@ -179,23 +192,33 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
         jButton1.setText("Nuevo");
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar");
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jButton4.setText("Salir");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
-        jButton6.setText("Modificar");
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -208,11 +231,11 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -227,11 +250,11 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)
+                        .addComponent(btnModificar)
                         .addGap(14, 14, 14)
-                        .addComponent(jButton3)
+                        .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -320,22 +343,74 @@ public class formPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         guardarPaciente();
        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        buscarPaciente();
-        if(comboEstado.getSelectedItem()== "0"){
-            comboEstado.setSelectedItem("Inactivo");
-        }else{
-            if(comboEstado.getSelectedItem()== "1"){
-            comboEstado.setSelectedItem("Activo");
-        }
+        try {
+               if(txtDni.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this,"Por favor ingresa un dni");
+             txtDni.requestFocus();
+         }  else{
+             buscarPaciente();
+             btnGuardar.setEnabled(false);
+             btnEliminar.setEnabled(true);
+             btnModificar.setEnabled(true);
+             txtApellido.setEnabled(true);
+             txtNombre.setEnabled(true);
+             txtDomicilio.setEnabled(true);
+            txtTelefono.setEnabled(true);
+            comboEstado.setEnabled(true);
+            txtDni.setEditable(false);
+            if(comboEstado.getSelectedItem()=="1"){
+                comboEstado.removeAllItems();
+                comboEstado.addItem("Activo");
+                comboEstado.addItem("Inactivo");                
+                comboEstado.setSelectedItem("Activo");
+            }else{
+                if(comboEstado.getSelectedItem()=="0"){
+                comboEstado.removeAllItems();
+                comboEstado.addItem("Activo");
+                comboEstado.addItem("Inactivo");
+                comboEstado.setSelectedItem("Inactivo");
             }
+            }     
+         } 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,"por favor ingresa solo campos numericos");
+            limpiar();
+        }
+ 
+     
+        
+        
+        
+       
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        UsuarioData ud = new UsuarioData();
+        ud.modificarPaciente(txtApellido, txtNombre, txtDomicilio, txtTelefono, comboEstado,txtDni);
+        limpiar();
+        comboEstado.setSelectedItem(null);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiar();
+        txtApellido.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtDomicilio.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        comboEstado.setEnabled(true);
+        btnGuardar.setEnabled(true);
+        btnEliminar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        txtDni.setEditable(true);
+        txtDni.requestFocus();
+        iniCombo();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,16 +520,23 @@ public class formPrincipal extends javax.swing.JFrame {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1,dni);
             ResultSet rs = pst.executeQuery();
-            while(rs.next()){
+           if(rs.next()){
                 txtApellido.setText(rs.getString("apellido"));
                 txtNombre.setText(rs.getString("nombre"));
                 txtDomicilio.setText(rs.getString("domicilio"));
                 txtTelefono.setText(rs.getString("telefono"));
-                comboEstado.setSelectedItem(rs.getString("estado"));
-                
-            }
-        } catch (SQLException ex) {
+                comboEstado.setSelectedItem(rs.getString("estado"));  
+                comboEstado.removeAllItems();
+                comboEstado.addItem("1");
+                comboEstado.addItem("0");    
+            }else{
+               JOptionPane.showMessageDialog(this,"No se encontro Paciente en nuestra base de datos");
+               limpiar();
+           }
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,"Error al conectar a la tabla paciente"+ ex.toString());
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this,"Formato Incorrecto o campo Dni Vacio");
         }
         
         
@@ -464,13 +546,13 @@ public class formPrincipal extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
