@@ -9,6 +9,7 @@ import Accesos.Conexion;
 import Accesos.UsuarioData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -66,7 +67,6 @@ public class formPrincipal extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         comboEstado = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -112,11 +112,9 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
         jButton5.setText("Buscar");
-
-        jButton7.setText("actualizar peso");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -143,10 +141,7 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addComponent(txtApellido)
                         .addComponent(txtNombre)
                         .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton7)))
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
@@ -174,9 +169,7 @@ public class formPrincipal extends javax.swing.JFrame {
                             .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7)))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -332,9 +325,17 @@ public class formPrincipal extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        JOptionPane.showInputDialog("Ingrese el peso actual");
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
+        buscarPaciente();
+        if(comboEstado.getSelectedItem()== "0"){
+            comboEstado.setSelectedItem("Inactivo");
+        }else{
+            if(comboEstado.getSelectedItem()== "1"){
+            comboEstado.setSelectedItem("Activo");
+        }
+            }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,6 +437,29 @@ public class formPrincipal extends javax.swing.JFrame {
         
         
     }
+    
+    public void buscarPaciente(){
+        int dni = Integer.parseInt(txtDni.getText().trim());
+        String sql = "SELECT * FROM paciente WHERE dni=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1,dni);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                txtApellido.setText(rs.getString("apellido"));
+                txtNombre.setText(rs.getString("nombre"));
+                txtDomicilio.setText(rs.getString("domicilio"));
+                txtTelefono.setText(rs.getString("telefono"));
+                comboEstado.setSelectedItem(rs.getString("estado"));
+                
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,"Error al conectar a la tabla paciente"+ ex.toString());
+        }
+        
+        
+        
+    }
    
    
 
@@ -447,7 +471,6 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
