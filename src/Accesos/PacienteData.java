@@ -72,6 +72,37 @@ public class PacienteData {
        
     return paciente;   
    }
+   public Paciente buscarPacientexId(int id){
+     Connection con= Conexion.Conectar();
+       Paciente paciente= null;
+       String sql="SELECT * FROM paciente WHERE idPaciente=? AND estado=1";
+       try {
+           PreparedStatement ps= con.prepareStatement(sql);
+           ps.setInt(1, id);
+           
+           
+           ResultSet rs= ps.executeQuery();
+           if(rs.next()){ 
+               paciente = new Paciente();
+           paciente.setIdPaciente(rs.getInt("idPaciente"));
+           paciente.setDni(rs.getInt("dni"));
+           paciente.setApellido(rs.getString("apellido"));
+           paciente.setNombre(rs.getString("nombre"));
+           paciente.setDomicilio(rs.getString("domicilio"));
+           paciente.setTelefono(rs.getString("telefono"));
+           paciente.setEstado(true);
+        }else{
+                JOptionPane.showMessageDialog(null, "no existe ese paciente");
+            }
+            ps.close();
+           
+       } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "no se pudo establecer la coneccion con la tabla paciente");
+       }
+       
+    return paciente;   
+           
+   }
    public List<Paciente> listarPacientes(){
        ArrayList <Paciente> listaPac= new ArrayList<>();
        String sql="SELECT * FROM paciente WHERE estado=1";

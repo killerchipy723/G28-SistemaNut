@@ -6,11 +6,15 @@
 package Accesos;
 
 import Entidades.Dieta;
+import Entidades.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,6 +24,7 @@ import javax.swing.JOptionPane;
  * @author scscl
  */
 public class DietaData {
+    private PacienteData pd= new PacienteData();
     Connection con=Conexion.Conectar();
     
     public void cargarDieta(Dieta dieta){
@@ -106,7 +111,36 @@ return dieta;
             JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla dieta");
         }
         
-        
     }
-            
+  public List<Dieta> listarDietas(){
+      ArrayList<Dieta> listaDietas= new ArrayList <>();
+      String sql="SELECT * FROM dieta WHERE estado =1";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                Dieta dieta=new Dieta();
+                dieta.setIdDieta(rs.getInt("idDieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                Paciente pac= pd.buscarPacientexId(rs.getInt("idPaciente"));
+                dieta.setIdPaciente(pac);
+                dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+                dieta.setPesoInicial(rs.getDouble("pesoInicial"));
+                dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+                dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+                dieta.setEstado(rs.getBoolean("estado"));
+                listaDietas.add(dieta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla dieta");
+        }
+    return listaDietas; 
+  }
+  public List<Paciente> listaPacientesNoLlegan(){
+      ArrayList <Paciente> listaPacientes= new ArrayList<> ();
+     return listaPacientes;  
+  }
+ 
 }
+//Se necesita listar los pacientes que a la fecha de fin no han llegado al peso buscado.
