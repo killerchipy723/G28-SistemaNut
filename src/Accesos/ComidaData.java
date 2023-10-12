@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -145,4 +147,21 @@ public class ComidaData {
         return listCalorias;
     } 
     
+    public void guardarComida(JTextField nom,JTextField detalle,JTextField cant, JComboBox estado){
+        String sql = "INSERT INTO comida(nombre,detalle,cantCalorias,estado) VALUES(?,?,?,?)";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, nom.getText());
+            pst.setString(2, detalle.getText());
+            pst.setInt(3, Integer.parseInt(cant.getText()));
+            pst.setBoolean(4, (boolean) estado.getSelectedItem());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Guardado");
+        } catch (SQLException ex) {
+            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 }
+

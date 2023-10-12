@@ -20,6 +20,7 @@ public class UsuarioData {
     Connection con = Conexion.Conectar();
     
     
+    
     public void validar(JTextField usuario,JPasswordField clave,JLabel user){
  
         formPrincipal frm = new formPrincipal();
