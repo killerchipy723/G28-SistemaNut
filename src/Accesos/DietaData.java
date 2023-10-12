@@ -137,8 +137,27 @@ return dieta;
         }
     return listaDietas; 
   }
-  public List<Paciente> listaPacientesNoLlegan(){
+  public List<Paciente> listaPacientesNoLlegan(double pesoActual, LocalDate fechaFinal){
       ArrayList <Paciente> listaPacientes= new ArrayList<> ();
+      String sql="SELECT dieta.idPaciente, dni, apellido, paciente.nombre FROM dieta, paciente WHERE dieta.idPaciente= paciente.idPaciente AND"
+              + " dieta.fechaFinal=? AND dieta.pesoFinal<?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaFinal));
+            ps.setDouble(2, pesoActual);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Paciente pac= new Paciente();
+                pac.setIdPaciente(rs.getInt("idPaciente"));
+                pac.setDni(rs.getInt("dni"));
+                pac.setApellido(rs.getString("apellido"));
+                pac.setNombre(rs.getString("nombre"));
+                listaPacientes.add(pac);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
      return listaPacientes;  
   }
  
