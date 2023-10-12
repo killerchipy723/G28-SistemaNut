@@ -49,12 +49,14 @@ public class Pruebas {
         
         PacienteData pd=new PacienteData();
         DietaData dd= new DietaData();
-        Paciente susana= pd.buscarPacientexDni(23675432);
+       // Paciente susana= pd.buscarPacientexDni(23675432);
         //Dieta luna=new Dieta("dieta de la luna",susana,LocalDate.of(2023, 10, 5),99.0,85.5,LocalDate.of(2024, 3, 10),true);
         //dd.cargarDieta(luna);
         //System.out.println(dd.buscardietaPorNombre(" luna"));
         
-        Dieta luna=new Dieta(1,"dieta de la luna llena",susana,LocalDate.of(2023, 10, 5),99.0,70.0, LocalDate.of(2024, 5, 10),true);
-        dd.modificarDieta(luna);
+       // Dieta luna=new Dieta(1,"dieta de la luna llena",susana,LocalDate.of(2023, 10, 5),99.0,70.0, LocalDate.of(2024, 5, 10),true);
+       // dd.modificarDieta(luna);
+        
+        System.out.println( dd.listaPacientesNoLlegan(80,LocalDate.of( 2024,5,10)));
     }
 }
