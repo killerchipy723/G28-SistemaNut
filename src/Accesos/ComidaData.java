@@ -153,8 +153,8 @@ public class ComidaData {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, nom.getText());
             pst.setString(2, detalle.getText());
-            pst.setInt(3, Integer.parseInt(cant.getText()));
-            pst.setBoolean(4, (boolean) estado.getSelectedItem());
+            pst.setInt(3,Integer.parseInt(cant.getText()) );
+            pst.setString(4, estado.getSelectedItem().toString());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro Guardado");
         } catch (SQLException ex) {

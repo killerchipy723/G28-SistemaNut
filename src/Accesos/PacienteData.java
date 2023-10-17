@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class PacienteData {
@@ -112,7 +114,7 @@ public class PacienteData {
            ResultSet rs= ps.executeQuery();
            while(rs.next()){
                Paciente paciente=new Paciente();
-               paciente.setIdPaciente(rs.getInt("idPaciente"));
+           paciente.setIdPaciente(rs.getInt("idPaciente"));
            paciente.setDni(rs.getInt("dni"));
            paciente.setApellido(rs.getString("apellido"));
            paciente.setNombre(rs.getString("nombre"));
@@ -163,6 +165,36 @@ public class PacienteData {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Paciente");
         }
-    }   
+    }
+     
+     public void llenarComboPaciente(JComboBox lista){
+         DefaultComboBoxModel combo = new DefaultComboBoxModel();
+         lista.setModel(combo);
+         List<Paciente> pac = new ArrayList<>();
+         
+         
+        try {
+            String sql="SELECT * FROM paciente WHERE estado = 'Activo'";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+           Paciente paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+           paciente.setDni(rs.getInt("dni"));
+           paciente.setApellido(rs.getString("apellido"));
+           paciente.setNombre(rs.getString("nombre"));
+           paciente.setDomicilio(rs.getString("domicilio"));
+           paciente.setTelefono(rs.getString("telefono"));
+           paciente.setEstado(true);
+           combo.addElement(paciente.getIdPaciente()+"-"+paciente.getApellido()+", "+paciente.getNombre());
+                
+            }
+            pst.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+     }
    
 }

@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -160,6 +162,27 @@ return dieta;
         }
      return listaPacientes;  
   }
- 
+ public void regTratamiento(JTextField nombre,JComboBox pac,JTextField fInicial,JTextField pInicial,JTextField pFinal,JTextField fFinal,JComboBox estado){
+     String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,fechaFinal, estado)"
+             + " VALUES(?,?,?,?,?,?,?)";
+        try {
+            int paciente = pac.getSelectedIndex()+1;
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, nombre.getText());
+            pst.setInt(2,paciente);
+            pst.setString(3, fInicial.getText());
+            pst.setString(4, pInicial.getText());
+            pst.setString(5, pFinal.getText());
+            pst.setString(6, fFinal.getText());
+            pst.setString(7, estado.getSelectedItem().toString());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Registro Guardado Exitosamente");
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al Conectar a la tabla Dieta"+ex.toString());
+        }
 }
+}
+
 //Se necesita listar los pacientes que a la fecha de fin no han llegado al peso buscado.
