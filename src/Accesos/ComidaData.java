@@ -10,13 +10,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -161,7 +164,32 @@ public class ComidaData {
             Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public void llenarTablaComida(JTable comida){
+        DefaultTableModel lista = new DefaultTableModel();
+        comida.setModel(lista);
+        String sql = "SELECT * FROM comida";
+        try {
+            Statement pst = con.createStatement();
+            ResultSet rs = pst.executeQuery(sql);
+            lista.setColumnIdentifiers(new Object[]{"ID","COMIDA","DETALLE","CALORIAS","ESTADO"});
+            while(rs.next()){
+                lista.addRow(new Object[]{
+                   rs.getInt("idComida"),
+                    rs.getString("nombre"),
+                    rs.getString("detalle"),
+                    rs.getInt("cantCalorias"),
+                    rs.getString("estado")});
+            }
+            comida.setModel(lista);
+        } catch (SQLException ex) {
+            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    public DefaultTableModel llenarTablaComida(DefaultTableModel modelo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 

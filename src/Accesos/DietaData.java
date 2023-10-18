@@ -5,6 +5,7 @@
  */
 package Accesos;
 
+import Entidades.Comida;
 import Entidades.Dieta;
 import Entidades.Paciente;
 import java.sql.Connection;
@@ -12,11 +13,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -47,7 +50,27 @@ public class DietaData {
         }
         
     }
-    
+    public void listaDieta(JComboBox lista){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        String sql = "SELECT idDieta,nombre FROM dieta";
+        Statement pst;
+        try {
+            pst = con.createStatement();
+             ResultSet rs = pst.executeQuery(sql);
+             while(rs.next()){
+                 Dieta dieta = new Dieta();
+              dieta.setIdDieta(rs.getInt("idDieta"));
+              dieta.setNombre(rs.getString("nombre"));
+              modelo.addElement(dieta.getIdDieta()+" - "+dieta.getNombre());
+               lista.setModel(modelo);
+             }
+             
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
     public Dieta buscardietaPorNombre(String nombre){
        
      Dieta dieta = null;
@@ -166,10 +189,10 @@ return dieta;
      String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,fechaFinal, estado)"
              + " VALUES(?,?,?,?,?,?,?)";
         try {
-            int paciente = pac.getSelectedIndex()+1;
+            int paciente = pac.getSelectedIndex();
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, nombre.getText());
-            pst.setInt(2,paciente);
+            pst.setInt(2,paciente+1);
             pst.setString(3, fInicial.getText());
             pst.setString(4, pInicial.getText());
             pst.setString(5, pFinal.getText());
@@ -181,7 +204,12 @@ return dieta;
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al Conectar a la tabla Dieta"+ex.toString());
+        
+        
+        
         }
+       
+        
 }
 }
 

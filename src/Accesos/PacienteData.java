@@ -174,7 +174,7 @@ public class PacienteData {
          
          
         try {
-            String sql="SELECT * FROM paciente WHERE estado = 'Activo'";
+            String sql="SELECT * FROM paciente";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
