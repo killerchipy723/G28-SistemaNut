@@ -29,7 +29,7 @@ public class ComidaData {
     Connection con= Conexion.Conectar();
     
     public void cargarComidas(Comida comida){
-        String sql="INSERT INTO comida (nombre, detalle, cantCalorias, estado) VALUES(?,?,?,?)";
+        String sql="INSERT INTO comida (idComida,nombre, detalle, cantCalorias, estado) VALUES(?,?,?,?)";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setString(1, comida.getNombre());
@@ -45,16 +45,16 @@ public class ComidaData {
         
     }
     
-    public void ModificarComida(Comida com){
+    public void ModificarComida(JTextField nom,JTextField det,JTextField cant, JComboBox est,JTextField id){
         String sql="UPDATE comida SET nombre=?,detalle=?,cantCalorias=?,estado=? WHERE idComida=?";
         
         try {
             PreparedStatement ps= con.prepareStatement(sql);
-            ps.setString(1,com.getNombre());
-            ps.setString (2, com.getDetalle());
-            ps.setInt(3, com.getCantCalorias());
-            ps.setBoolean(4, true);
-            ps.setInt(5, com.getIdComida());
+            ps.setString(1,nom.getText());
+            ps.setString (2, det.getText());
+            ps.setInt(3, Integer.parseInt(cant.getText()));
+            ps.setString(4, est.getSelectedItem().toString());
+            ps.setString(5, id.getText());
             int exito= ps.executeUpdate();
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "se modifico correctamente");
@@ -167,7 +167,7 @@ public class ComidaData {
     public void llenarTablaComida(JTable comida){
         DefaultTableModel lista = new DefaultTableModel();
         comida.setModel(lista);
-        String sql = "SELECT * FROM comida";
+        String sql = "SELECT * FROM comida ";
         try {
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);

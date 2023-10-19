@@ -28,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -61,6 +62,7 @@ public class formPrincipal extends javax.swing.JFrame {
         btnModificar.setEnabled(false);
         btnModificarComida.setEnabled(false);
         txtDni.requestFocus();
+        lblDieta.setVisible(false);
     
    
         //iniCombo();
@@ -122,6 +124,8 @@ public class formPrincipal extends javax.swing.JFrame {
         txtDetalleComida = new javax.swing.JTextField();
         txtCantCalorias = new javax.swing.JTextField();
         comboComida = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        txtIdComida = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         btnGuardarComida = new javax.swing.JButton();
         btnModificarComida = new javax.swing.JButton();
@@ -164,6 +168,10 @@ public class formPrincipal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaComidasDieta = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        lblDieta = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -310,7 +318,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,6 +383,8 @@ public class formPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel26.setText("ID");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -387,7 +397,8 @@ public class formPrincipal extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel9)
-                                    .addComponent(jLabel10)))
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel26)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel11)))
@@ -395,18 +406,22 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCantCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreComida, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(txtDetalleComida)))
+                            .addComponent(txtDetalleComida)
+                            .addComponent(txtIdComida, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboComida, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtIdComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtNombreComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -443,6 +458,11 @@ public class formPrincipal extends javax.swing.JFrame {
 
         btnModificarComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
         btnModificarComida.setText("Modificar");
+        btnModificarComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarComidaActionPerformed(evt);
+            }
+        });
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jButton9.setText("Salir");
@@ -509,7 +529,7 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel21)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 80, Short.MAX_VALUE))
+                .addGap(0, 77, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comidas", jPanel3);
@@ -657,7 +677,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addGap(55, 55, 55))
         );
@@ -702,7 +722,7 @@ public class formPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(238, 238, 238)
                 .addComponent(jLabel23)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,6 +739,11 @@ public class formPrincipal extends javax.swing.JFrame {
         comboDieta.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboDietaItemStateChanged(evt);
+            }
+        });
+        comboDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDietaActionPerformed(evt);
             }
         });
 
@@ -740,7 +765,7 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(comboDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         tablaComidass.setModel(new javax.swing.table.DefaultTableModel(
@@ -764,12 +789,25 @@ public class formPrincipal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tablaComidasDieta);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
-        jButton1.setLabel("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        jButton2.setLabel("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel25.setText("Listado de comidas correspondiente a la dieta:  ");
+
+        lblDieta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblDieta.setText("Nombre");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -777,38 +815,68 @@ public class formPrincipal extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(lblDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jButton1)))
-                        .addGap(39, 39, 39)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2)))))
+                        .addGap(13, 13, 13)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(36, 36, 36)
+                        .addComponent(lblDieta)
+                        .addGap(9, 9, 9)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dietas", jPanel10);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 910, 470));
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 961, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Consultas", jPanel13);
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 970, 470));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 0));
@@ -820,7 +888,7 @@ public class formPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 967, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -937,12 +1005,14 @@ public class formPrincipal extends javax.swing.JFrame {
 
     private void tablaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaComidaMouseClicked
         int seleccion = tablaComida.rowAtPoint(evt.getPoint());
+        txtIdComida.setText(String.valueOf(tablaComida.getValueAt(seleccion, 0)));
         txtNombreComida.setText(String.valueOf(tablaComida.getValueAt(seleccion, 1)));
         txtDetalleComida.setText(String.valueOf(tablaComida.getValueAt(seleccion, 2)));
         txtCantCalorias.setText(String.valueOf(tablaComida.getValueAt(seleccion, 3)));
         comboComida.setSelectedItem(String.valueOf(tablaComida.getValueAt(seleccion,4)));
         btnModificarComida.setEnabled(true);
         btnGuardarComida.setEnabled(false);
+        txtIdComida.setEnabled(false);
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void btnNuevoTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTratamientoActionPerformed
@@ -988,7 +1058,27 @@ public class formPrincipal extends javax.swing.JFrame {
 
     private void comboDietaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboDietaItemStateChanged
         listarComidas();
+        lblDieta.setText(comboDieta.getSelectedItem().toString());
+        lblDieta.setVisible(true);
+        
+     
+        
     }//GEN-LAST:event_comboDietaItemStateChanged
+
+    private void comboDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDietaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboDietaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        quitarComida();
+        listarComidas();
+        comData.llenarTablaComida(tablaComida);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnModificarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarComidaActionPerformed
+        comData.ModificarComida(txtNombreComida, txtDetalleComida, txtCantCalorias, comboComida,txtIdComida);
+        comData.llenarTablaComida(tablaComida);
+    }//GEN-LAST:event_btnModificarComidaActionPerformed
 
     private void limpiarComida(){
         txtNombreComida.setText("");
@@ -1138,14 +1228,16 @@ public class formPrincipal extends javax.swing.JFrame {
     }
    public void guardarDietaComida(){
         
-        String sql = "INSERT INTO dietacomida(idDieta,idComida)VALUES (?,?) ";
-       Object dieta = comboDieta.getSelectedIndex()+1;
-        
+        String sql = "INSERT INTO dietacomida(idDieta,idComida)VALUES (?,?) ";        
        try {
+           int dieta = comboDieta.getSelectedIndex()+1;
            PreparedStatement pst = con.prepareStatement(sql);
-           pst.setObject(1, dieta);           
-           int selectedRow = tablaComidass.getSelectedRow();
-            pst.setString(2, tablaComidass.getValueAt(selectedRow, 0).toString());
+           pst.setInt(1, dieta);
+           System.out.println("combo "+dieta);           
+           Object selectedRow = tablaComidass.getSelectedRow();
+          
+            pst.setString(2, tablaComidass.getValueAt((int) selectedRow, 0).toString());
+             System.out.println("row "+selectedRow);
             pst.executeUpdate();             
             JOptionPane.showMessageDialog(this, "Registro Guardado");
        } catch (SQLException ex) {
@@ -1162,11 +1254,12 @@ public class formPrincipal extends javax.swing.JFrame {
          String sql = "SELECT c.idComida, c.nombre, c.detalle\n" +
         "FROM dietacomida dc\n" +
         "JOIN comida c ON dc.idComida = c.idComida\n" +
-        "WHERE dc.idDieta ="+select+"";
+        "WHERE c.estado = 'Activo' AND dc.idDieta ="+select+"";
         try {
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             modelo.setColumnIdentifiers(new Object[]{"ID","COMIDA","DETALLE"});
+           
             while(rs.next()){
                 modelo.addRow(new Object[]{
                 rs.getInt("idComida"),
@@ -1174,10 +1267,34 @@ public class formPrincipal extends javax.swing.JFrame {
                     rs.getString("detalle")});
             }
             tablaComidasDieta.setModel(modelo);
+            TableColumn colID = tablaComidasDieta.getColumnModel().getColumn(0);
+            colID.setPreferredWidth(2);
+            TableColumn colDet = tablaComidasDieta.getColumnModel().getColumn(2);
+            colDet.setPreferredWidth(100);
+            TableColumn colNom = tablaComidasDieta.getColumnModel().getColumn(1);
+            colNom.setPreferredWidth(2);
+            
         } catch (SQLException ex) {
             Logger.getLogger(formPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
        }
+   public void quitarComida(){
+       int eliminar = tablaComidasDieta.getSelectedRow();
+       String valor = tablaComidasDieta.getValueAt(eliminar,0).toString();
+           System.out.println(""+valor);
+           String sql = "UPDATE comida  SET estado = 'Inactivo' WHERE idComida  =?";
+           
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, valor);
+            pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(formPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -1196,6 +1313,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboEstadoTramiento;
     private javax.swing.JComboBox<String> comboPaciente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1218,6 +1336,8 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1229,6 +1349,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1241,6 +1362,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblDieta;
     private javax.swing.JTable tablaComida;
     private javax.swing.JTable tablaComidasDieta;
     private javax.swing.JTable tablaComidass;
@@ -1251,6 +1373,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaIni;
+    private javax.swing.JTextField txtIdComida;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreComida;
     private javax.swing.JTextField txtNombreDieta;

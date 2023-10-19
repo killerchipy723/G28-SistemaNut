@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -61,8 +62,11 @@ public class DietaData {
                  Dieta dieta = new Dieta();
               dieta.setIdDieta(rs.getInt("idDieta"));
               dieta.setNombre(rs.getString("nombre"));
+               
               modelo.addElement(dieta.getIdDieta()+" - "+dieta.getNombre());
-               lista.setModel(modelo);
+             
+              lista.setModel(modelo);
+            
              }
              
              
