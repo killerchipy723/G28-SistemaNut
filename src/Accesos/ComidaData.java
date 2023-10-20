@@ -6,6 +6,7 @@
 package Accesos;
 
 import Entidades.Comida;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -167,11 +169,14 @@ public class ComidaData {
     public void llenarTablaComida(JTable comida){
         DefaultTableModel lista = new DefaultTableModel();
         comida.setModel(lista);
+      int rowColor1 = 0xE0E0E0; 
+      int rowColor2 = 0xFFFFFF; 
         String sql = "SELECT * FROM comida ";
         try {
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);
             lista.setColumnIdentifiers(new Object[]{"ID","COMIDA","DETALLE","CALORIAS","ESTADO"});
+           
             while(rs.next()){
                 lista.addRow(new Object[]{
                    rs.getInt("idComida"),
@@ -179,8 +184,12 @@ public class ComidaData {
                     rs.getString("detalle"),
                     rs.getInt("cantCalorias"),
                     rs.getString("estado")});
+                 
+                 
             }
+           
             comida.setModel(lista);
+           
         } catch (SQLException ex) {
             Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
         }

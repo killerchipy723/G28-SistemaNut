@@ -31,4 +31,29 @@ public class Consultas {
            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
+   public void llenarTablaTratamiento(JTable grid){
+       int selectedRow = grid.getSelectedRow();
+       DefaultTableModel modelo = new DefaultTableModel();
+       String sql = "SELECT * FROM dieta ";
+       try {
+           Statement st = con.createStatement();
+           ResultSet rs = st.executeQuery(sql);
+           modelo.setColumnIdentifiers(new Object[]{"ID","NOMB.DIETA","ID.PACIENTE","F.INICIAL","PESO.INI","PESO.BUSC","PESO,OBT","F.FINAL","ESTADO"});
+           while(rs.next()){
+               modelo.addRow(new Object[]{
+                rs.getInt("idDieta"),
+                    rs.getString("nombre"),  
+                    rs.getInt("idPaciente"),  
+                    rs.getString("fechaInicial"),  
+                    rs.getInt("pesoInicial"),  
+                    rs.getInt("pesoFinal"),  
+                    rs.getInt("pesoObtenido"), 
+                    rs.getString("fechaFinal"), 
+                    rs.getString("estado")});
+           }
+           grid.setModel(modelo);
+       } catch (SQLException ex) {
+           Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
 }

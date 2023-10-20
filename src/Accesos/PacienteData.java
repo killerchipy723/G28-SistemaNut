@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class PacienteData {
     Connection con = Conexion.Conectar(); 
@@ -167,34 +168,6 @@ public class PacienteData {
         }
     }
      
-     public void llenarComboPaciente(JComboBox lista){
-         DefaultComboBoxModel combo = new DefaultComboBoxModel();
-         lista.setModel(combo);
-         List<Paciente> pac = new ArrayList<>();
-         
-         
-        try {
-            String sql="SELECT * FROM paciente";
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-           Paciente paciente = new Paciente();
-                paciente.setIdPaciente(rs.getInt("idPaciente"));
-           paciente.setDni(rs.getInt("dni"));
-           paciente.setApellido(rs.getString("apellido"));
-           paciente.setNombre(rs.getString("nombre"));
-           paciente.setDomicilio(rs.getString("domicilio"));
-           paciente.setTelefono(rs.getString("telefono"));
-           paciente.setEstado(true);
-           combo.addElement(paciente.getIdPaciente()+"-"+paciente.getApellido()+", "+paciente.getNombre());
-                
-            }
-            pst.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(PacienteData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
-     }
+     
    
 }

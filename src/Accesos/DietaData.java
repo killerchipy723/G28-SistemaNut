@@ -34,7 +34,8 @@ public class DietaData {
     Connection con=Conexion.Conectar();
     
     public void cargarDieta(Dieta dieta){
-        String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,fechaFinal, estado) VALUES(?,?,?,?,?,?,?)";
+        String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,pesoObtenido,fechaFinal, estado)"
+                + " VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setString(1, dieta.getNombre());
@@ -189,8 +190,8 @@ return dieta;
         }
      return listaPacientes;  
   }
- public void regTratamiento(JTextField nombre,JComboBox pac,JTextField fInicial,JTextField pInicial,JTextField pFinal,JTextField fFinal,JComboBox estado){
-     String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,fechaFinal, estado)"
+ public void regTratamiento(JTextField nombre,JComboBox pac,JTextField fInicial,JTextField pInicial,JTextField pFinal,JTextField pObtenido,JTextField fFinal,JComboBox estado){
+     String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,pesoObtenido,fechaFinal, estado)"
              + " VALUES(?,?,?,?,?,?,?)";
         try {
             int paciente = pac.getSelectedIndex();
@@ -200,8 +201,9 @@ return dieta;
             pst.setString(3, fInicial.getText());
             pst.setString(4, pInicial.getText());
             pst.setString(5, pFinal.getText());
-            pst.setString(6, fFinal.getText());
-            pst.setString(7, estado.getSelectedItem().toString());
+             pst.setInt(6, Integer.parseInt(pObtenido.getText()));
+            pst.setString(7, fFinal.getText());
+            pst.setString(8, estado.getSelectedItem().toString());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Registro Guardado Exitosamente");
             
