@@ -55,5 +55,85 @@ public class Consultas {
        } catch (SQLException ex) {
            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
        }
+       
+      
    }
+    public void pacienteOk(JTable JT){
+        DefaultTableModel model = new DefaultTableModel();
+        
+           String SQL = "SELECT p.idPaciente, p.nombre, p.apellido,d.pesoInicial,d.pesoFinal,d.pesoObtenido\n" +
+                        "FROM paciente p\n" +
+                        "JOIN dieta d ON p.idPaciente = d.idPaciente\n" +
+                        "WHERE d.pesoObtenido <= d.pesoFinal;";
+       try {
+           Statement st = con.createStatement();
+           ResultSet rs = st.executeQuery(SQL);
+           while(rs.next()){
+            model.setColumnIdentifiers(new Object[]{"ID","NOMBRE PACIENTE","APELLIDO","PESO.INI","PESO.BUSC","PESO,OBT",});
+             model.addRow(new Object[]{
+                rs.getInt("idPaciente"),
+                    rs.getString("nombre"),  
+                    rs.getString("apellido"),                     
+                    rs.getDouble("pesoInicial"),  
+                    rs.getDouble("pesoFinal"),                    
+                     rs.getDouble("pesoObtenido")});
+           }
+           JT.setModel(model);
+       } catch (SQLException ex) {
+           Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
+    
+    
+     public void pacienteNO(JTable JT){
+        DefaultTableModel model = new DefaultTableModel();
+        
+           String SQL = "SELECT p.idPaciente, p.nombre, p.apellido,d.pesoInicial,d.pesoFinal,d.pesoObtenido\n" +
+                        "FROM paciente p\n" +
+                        "JOIN dieta d ON p.idPaciente = d.idPaciente\n" +
+                        "WHERE d.pesoObtenido >= d.pesoFinal;";
+       try {
+           Statement st = con.createStatement();
+           ResultSet rs = st.executeQuery(SQL);
+           while(rs.next()){
+            model.setColumnIdentifiers(new Object[]{"ID","NOMBRE PACIENTE","APELLIDO","PESO.INI","PESO.BUSC","PESO,OBT",});
+             model.addRow(new Object[]{
+                rs.getInt("idPaciente"),
+                    rs.getString("nombre"),  
+                    rs.getString("apellido"),                     
+                    rs.getDouble("pesoInicial"),  
+                    rs.getDouble("pesoFinal"),                    
+                     rs.getDouble("pesoObtenido")});
+           }
+           JT.setModel(model);
+       } catch (SQLException ex) {
+           Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
+     
+      public void pacienteActivo(JTable JT){
+        DefaultTableModel model = new DefaultTableModel();
+        
+           String SQL = "SELECT p.idPaciente, p.nombre, p.apellido,d.pesoInicial,d.pesoFinal,d.pesoObtenido\n" +
+                        "FROM paciente p\n" +
+                        "JOIN dieta d ON p.idPaciente = d.idPaciente\n" +
+                        "WHERE d.estado = 'Activo';";
+       try {
+           Statement st = con.createStatement();
+           ResultSet rs = st.executeQuery(SQL);
+           while(rs.next()){
+            model.setColumnIdentifiers(new Object[]{"ID","NOMBRE PACIENTE","APELLIDO","PESO.INI","PESO.BUSC","PESO,OBT",});
+             model.addRow(new Object[]{
+                rs.getInt("idPaciente"),
+                    rs.getString("nombre"),  
+                    rs.getString("apellido"),                     
+                    rs.getDouble("pesoInicial"),  
+                    rs.getDouble("pesoFinal"),                    
+                     rs.getDouble("pesoObtenido")});
+           }
+           JT.setModel(model);
+       } catch (SQLException ex) {
+           Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
 }

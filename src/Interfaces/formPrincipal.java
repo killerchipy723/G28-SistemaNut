@@ -56,10 +56,11 @@ public class formPrincipal extends javax.swing.JFrame {
     public formPrincipal() {
         initComponents();
         mostrarFecha();
-        PersonalizerTable renderer = new PersonalizerTable();
+        PersonalizerTable renderer = new PersonalizerTable();        
         tablaComida.setDefaultRenderer(Object.class, renderer);
         tablaComidass.setDefaultRenderer(Object.class, renderer);
         tablaComidasDieta.setDefaultRenderer(Object.class, renderer);
+        tablaPesoOK.setDefaultRenderer(Object.class, renderer);
         consultas.llenarTablaTratamiento(tablaTratamiento);
         Dd.listaDieta(comboDieta);
         comData.llenarTablaComida(tablaComida);
@@ -191,8 +192,14 @@ public class formPrincipal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaTratamiento = new javax.swing.JTable();
-        txtNPaciente = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaPesoOK = new javax.swing.JTable();
+        radioOK = new javax.swing.JRadioButton();
+        radioNO = new javax.swing.JRadioButton();
+        radioAc = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -341,7 +348,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(92, 92, 92))
         );
@@ -441,7 +448,7 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboComida, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,7 +532,7 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(19, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
@@ -685,7 +692,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel25)
@@ -840,7 +847,7 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton6)
                         .addGap(51, 51, 51)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -906,13 +913,8 @@ public class formPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(107, 107, 107))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtNPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
+                .addComponent(jLabel22)
+                .addGap(107, 107, 107))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -925,8 +927,7 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtNPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel22))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -936,15 +937,97 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Tratamiento", jPanel5);
 
+        jPanel14.setBackground(new java.awt.Color(0, 0, 102));
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Formulario de Consultas");
+        jLabel29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel29.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+        );
+
+        tablaPesoOK.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tablaPesoOK);
+
+        radioOK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        radioOK.setText("Pacientes que llegaron al peso ");
+        radioOK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radioOKMouseClicked(evt);
+            }
+        });
+        radioOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioOKActionPerformed(evt);
+            }
+        });
+
+        radioNO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        radioNO.setText("Paciente que no llegaron al peso");
+        radioNO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radioNOMouseClicked(evt);
+            }
+        });
+
+        radioAc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        radioAc.setText("Pacientes con tratamiento Activo");
+        radioAc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radioAcMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 961, Short.MAX_VALUE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(radioOK)
+                        .addGap(70, 70, 70)
+                        .addComponent(radioNO)
+                        .addGap(40, 40, 40)
+                        .addComponent(radioAc))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioOK)
+                    .addComponent(radioNO)
+                    .addComponent(radioAc))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 215, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultas", jPanel13);
@@ -978,6 +1061,7 @@ public class formPrincipal extends javax.swing.JFrame {
         UsuarioData ud = new UsuarioData();
 
         ud.modificarPaciente(txtApellido, txtNombre, txtDomicilio, txtTelefono, comboEstado,txtDni);
+        consultas.pacienteActivo(tablaPesoOK);
         limpiar();
         comboEstado.setSelectedItem(null);
         txtDni.setEditable(true);
@@ -1171,6 +1255,29 @@ public class formPrincipal extends javax.swing.JFrame {
         comboEstadoTramiento.setSelectedItem(String.valueOf(tablaTratamiento.getValueAt(seleccion,8)));
         txtNPaciente.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion,2)));
     }//GEN-LAST:event_tablaTratamientoMouseClicked
+
+    private void radioOKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioOKMouseClicked
+        radioNO.setSelected(false);
+        radioAc.setSelected(false);
+        consultas.pacienteOk(tablaPesoOK);
+        
+    }//GEN-LAST:event_radioOKMouseClicked
+
+    private void radioNOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioNOMouseClicked
+        radioOK.setSelected(false);
+        radioAc.setSelected(false);
+        consultas.pacienteNO(tablaPesoOK);
+    }//GEN-LAST:event_radioNOMouseClicked
+
+    private void radioAcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioAcMouseClicked
+        radioNO.setSelected(false);
+        radioOK.setSelected(false);
+        consultas.pacienteActivo(tablaPesoOK);
+    }//GEN-LAST:event_radioAcMouseClicked
+
+    private void radioOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioOKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioOKActionPerformed
 
     private void limpiarComida(){
         txtNombreComida.setText("");
@@ -1463,6 +1570,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1475,6 +1583,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1487,11 +1596,16 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblDieta;
+    private javax.swing.JRadioButton radioAc;
+    private javax.swing.JRadioButton radioNO;
+    private javax.swing.JRadioButton radioOK;
     private javax.swing.JTable tablaComida;
     private javax.swing.JTable tablaComidasDieta;
     private javax.swing.JTable tablaComidass;
+    private javax.swing.JTable tablaPesoOK;
     private javax.swing.JTable tablaTratamiento;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCantCalorias;
@@ -1501,7 +1615,6 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaIni;
     private javax.swing.JTextField txtIdComida;
-    private javax.swing.JTextField txtNPaciente;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreComida;
     private javax.swing.JTextField txtNombreDieta;
