@@ -100,18 +100,20 @@ public class Reports {
         Document documento = new Document(PageSize.A4.rotate());         
         String ruta = System.getProperty("user.home");
         PdfWriter.getInstance(documento,new FileOutputStream(ruta+"/Desktop/Rep_PacOK.pdf"));        
-        documento.open();        
+        documento.open();
+        
+        Paragraph paragraph2 = new Paragraph("CENTRO INTEGRAL DE NUTRICION - DRA FERNANDA SALAZAR");                
+        paragraph2.setSpacingBefore(20); // Espacio antes del párrafo en puntos
+        paragraph2.setSpacingAfter(20);  // Espacio después del 
+        documento.add(paragraph2);
+        
         Paragraph paragraph = new Paragraph("REPORTE DE PACIENTES QUE LLEGARON AL PESO BUSCADO");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);        
         paragraph.setSpacingBefore(20); // Espacio antes del párrafo en puntos
         paragraph.setSpacingAfter(20);  // Espacio después del 
         documento.add(paragraph);
         
-        Paragraph paragraph2 = new Paragraph("CENTRO INTEGRAL DE NUTRICION - DRA FERNANDA SALAZAR");
-        paragraph.setAlignment(Paragraph.ALIGN_CENTER);        
-        paragraph.setSpacingBefore(20); // Espacio antes del párrafo en puntos
-        paragraph.setSpacingAfter(20);  // Espacio después del 
-        documento.add(paragraph2);
+        
         PdfPTable tabla = new PdfPTable(6);
             
             tabla.setWidthPercentage(100);
@@ -156,7 +158,11 @@ public class Reports {
         Document documento = new Document(PageSize.A4.rotate());         
         String ruta = System.getProperty("user.home");
         PdfWriter.getInstance(documento,new FileOutputStream(ruta+"/Desktop/Rep_PacNO.pdf"));        
-        documento.open();        
+        documento.open();  
+        Paragraph paragraph2 = new Paragraph("CENTRO INTEGRAL DE NUTRICION - DRA FERNANDA SALAZAR");                
+        paragraph2.setSpacingBefore(20); // Espacio antes del párrafo en puntos
+        paragraph2.setSpacingAfter(20);  // Espacio después del 
+        documento.add(paragraph2);
         Paragraph paragraph = new Paragraph("REPORTE DE PACIENTES QUE NO LLEGARON AL PESO BUSCADO");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);        
         paragraph.setSpacingBefore(20); // Espacio antes del párrafo en puntos
@@ -205,7 +211,11 @@ public class Reports {
         Document documento = new Document(PageSize.A4.rotate());         
         String ruta = System.getProperty("user.home");
         PdfWriter.getInstance(documento,new FileOutputStream(ruta+"/Desktop/Rep_Activo.pdf"));        
-        documento.open();        
+        documento.open();  
+        Paragraph paragraph2 = new Paragraph("CENTRO INTEGRAL DE NUTRICION - DRA FERNANDA SALAZAR");                
+        paragraph2.setSpacingBefore(20); // Espacio antes del párrafo en puntos
+        paragraph2.setSpacingAfter(20);  // Espacio después del 
+        documento.add(paragraph2);
         Paragraph paragraph = new Paragraph("REPORTE DE PACIENTES CON TRATAMIENTO ACTIVO");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);        
         paragraph.setSpacingBefore(20); // Espacio antes del párrafo en puntos
