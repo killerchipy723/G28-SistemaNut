@@ -65,9 +65,11 @@ public class formPrincipal extends javax.swing.JFrame {
    DietacomidaData dc = new DietacomidaData();
    Reports repo = new Reports();
    
+   
     public formPrincipal() {
         initComponents();
         mostrarFecha();
+        
         //txtidPacienteTratamiento.setVisible(false);
         txtPesoObtenido.setText("0");
         desabilitarFormTratamiento();
@@ -79,6 +81,7 @@ public class formPrincipal extends javax.swing.JFrame {
         tablaPesoOK.setDefaultRenderer(Object.class, renderer);
         consultas.llenarTablaTratamiento(tablaTratamiento);
         Dd.listaDieta(comboDieta);
+        
         comData.llenarTablaComida(tablaComida);
         comData.llenarTablaComida(tablaComidass);
         
@@ -106,6 +109,7 @@ public class formPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Login lg = new Login();
         lg.setVisible(false);
+        
         
     }
     
@@ -178,6 +182,7 @@ public class formPrincipal extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         comboDieta = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaComidass = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -639,6 +644,14 @@ public class formPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addreg.png"))); // NOI18N
+        jButton8.setText("Agregar Dieta");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -649,6 +662,10 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8)
+                .addGap(118, 118, 118))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -657,7 +674,9 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(comboDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         tablaComidass.setModel(new javax.swing.table.DefaultTableModel(
@@ -720,7 +739,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel25)
@@ -736,24 +755,24 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel25)
                                     .addGroup(jPanel10Layout.createSequentialGroup()
                                         .addComponent(jButton1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)))))
-                        .addGap(13, 13, 13)
+                                        .addComponent(jButton2))))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(lblDieta)
                         .addGap(9, 9, 9)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dietas", jPanel10);
@@ -833,6 +852,7 @@ public class formPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addreg.png"))); // NOI18N
         jButton3.setText("Nueva Dieta");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -858,51 +878,6 @@ public class formPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(txtFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel17))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(txtNombreDietas, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboDietaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPesoIni, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPesoFin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPesoObtenido, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboEstadoTramiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(btnNuevoTratamiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnGuardarTratamiento)
@@ -917,7 +892,52 @@ public class formPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel30)
                         .addGap(18, 18, 18)
-                        .addComponent(txtidPacienteTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtidPacienteTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                                        .addComponent(txtFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPesoIni, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(txtNombreDietas, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(comboDietaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(comboPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(21, 21, 21))))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPesoFin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPesoObtenido, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboEstadoTramiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(13, Short.MAX_VALUE))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1269,8 +1289,9 @@ public class formPrincipal extends javax.swing.JFrame {
         txtCantCalorias.setText(String.valueOf(tablaComida.getValueAt(seleccion, 3)));
         comboComida.setSelectedItem(String.valueOf(tablaComida.getValueAt(seleccion,4)));
         btnModificarComida.setEnabled(true);
-        btnGuardarTratamiento.setEnabled(false);
+    
         txtIdComida.setEnabled(false);
+        btnGuardarComida.setEnabled(false);
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void btnNuevoTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTratamientoActionPerformed
@@ -1301,10 +1322,15 @@ public class formPrincipal extends javax.swing.JFrame {
                 comboEstadoTramiento.setSelectedItem(null);
                 comboPaciente.setSelectedItem(null);
                 txtNombreDietas.requestFocus();
+                
     }
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
           limpiarComida();
           btnGuardarComida.setEnabled(false);
+          btnGuardarComida.setEnabled(true);
+          btnModificarComida.setEnabled(false);
+          txtIdComida.setText("");
+          
     }//GEN-LAST:event_jButton7ActionPerformed
     
     private void txtNombreComidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreComidaKeyTyped
@@ -1356,6 +1382,8 @@ public class formPrincipal extends javax.swing.JFrame {
     private void btnModificarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarComidaActionPerformed
         comData.ModificarComida(txtNombreComida, txtDetalleComida, txtCantCalorias, comboComida,txtIdComida);
         comData.llenarTablaComida(tablaComida);
+        comData.llenarTablaComida(tablaComidass);
+        
     }//GEN-LAST:event_btnModificarComidaActionPerformed
 
     private void tablaTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTratamientoMouseClicked
@@ -1363,7 +1391,7 @@ public class formPrincipal extends javax.swing.JFrame {
         int seleccion = tablaTratamiento.rowAtPoint(evt.getPoint());    
         txtidPacienteTratamiento.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 0)));
         txtNombreDietas.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 1)));
-        comboPaciente.setSelectedItem(String.valueOf(tablaTratamiento.getValueAt(seleccion,2)));
+       comboPaciente.setSelectedItem(tablaTratamiento.getValueAt(seleccion,2));
         txtFechaIni.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 3)));
         txtPesoIni.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 4)));
         txtPesoFin.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 5)));
@@ -1371,9 +1399,13 @@ public class formPrincipal extends javax.swing.JFrame {
         txtFechaFin.setText(String.valueOf(tablaTratamiento.getValueAt(seleccion, 7)));
         comboEstadoTramiento.setSelectedItem(String.valueOf(tablaTratamiento.getValueAt(seleccion,8)));
         int selec = (int) tablaTratamiento.getValueAt(seleccion,0);
+        Object sel = (int)tablaTratamiento.getValueAt(seleccion,2);
+        comboPaciente.setSelectedItem(sel);
         txtidPacienteTratamiento.setText(""+selec);
-        System.out.println(""+selec);
-        consultas.buscarPcDni(selec, comboPaciente);
+        System.out.println(""+sel);
+         
+        consultas.buscarPcDni((int) sel, comboPaciente);
+         
         btnModificarTratamiento.setEnabled(true);
         btnEliminarTratamiento.setEnabled(true);
         comboEstadoTramiento.setEnabled(false);
@@ -1414,6 +1446,7 @@ public class formPrincipal extends javax.swing.JFrame {
         String dieta = JOptionPane.showInputDialog("Ingrese el nombre de la nueva dieta");
         dvs.agregarDietas(dieta);
         dvs.llenarComboDietas(comboDietaTratamiento);
+        Dd.listaDieta(comboDieta);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void comboDietaTratamientoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboDietaTratamientoItemStateChanged
@@ -1499,6 +1532,14 @@ public class formPrincipal extends javax.swing.JFrame {
       }
       }
   }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+       String dieta = JOptionPane.showInputDialog("Ingrese el nombre de la nueva dieta");
+        dvs.agregarDietas(dieta);
+        dvs.llenarComboDietas(comboDietaTratamiento);
+        Dd.listaDieta(comboDieta);
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void limpiarComida(){
         txtNombreComida.setText("");
@@ -1806,6 +1847,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

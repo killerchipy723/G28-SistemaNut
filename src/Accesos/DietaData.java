@@ -54,14 +54,14 @@ public class DietaData {
     }
     public void listaDieta(JComboBox lista){
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        String sql = "SELECT idDieta,nombre FROM dieta";
+        String sql = "SELECT id_Dieta,nombre FROM dietasvarias";
         Statement pst;
         try {
             pst = con.createStatement();
              ResultSet rs = pst.executeQuery(sql);
              while(rs.next()){
                  Dieta dieta = new Dieta();
-              dieta.setIdDieta(rs.getInt("idDieta"));
+              dieta.setIdDieta(rs.getInt("id_Dieta"));
               dieta.setNombre(rs.getString("nombre"));
                
               modelo.addElement(dieta.getIdDieta()+" - "+dieta.getNombre());
