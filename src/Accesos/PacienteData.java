@@ -29,7 +29,7 @@ public class PacienteData {
            pst.setString(3, paciente.getNombre());
            pst.setString(4, paciente.getDomicilio());
            pst.setString(5, paciente.getTelefono());
-           pst.setBoolean(6, paciente.getEstado());
+           pst.setString(6, paciente.getEstado());
            pst.executeUpdate();
            
        } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class PacienteData {
            paciente.setNombre(rs.getString("nombre"));
            paciente.setDomicilio(rs.getString("domicilio"));
            paciente.setTelefono(rs.getString("telefono"));
-           paciente.setEstado(true);
+           paciente.setEstado(rs.getString("estado"));
         }else{
                 JOptionPane.showMessageDialog(null, "no existe ese paciente");
             }
@@ -93,7 +93,7 @@ public class PacienteData {
            paciente.setNombre(rs.getString("nombre"));
            paciente.setDomicilio(rs.getString("domicilio"));
            paciente.setTelefono(rs.getString("telefono"));
-           paciente.setEstado(true);
+           paciente.setEstado(rs.getString("estado"));
         }else{
                 JOptionPane.showMessageDialog(null, "no existe ese paciente");
             }
@@ -121,7 +121,7 @@ public class PacienteData {
            paciente.setNombre(rs.getString("nombre"));
            paciente.setDomicilio(rs.getString("domicilio"));
            paciente.setTelefono(rs.getString("telefono"));
-           paciente.setEstado(true);
+           paciente.setEstado(rs.getString("estado"));
            listaPac.add(paciente);
            }
            ps.close();

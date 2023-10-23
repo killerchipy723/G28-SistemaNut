@@ -9,12 +9,12 @@ public class Paciente {
     private String nombre;  
     private String domicilio;
     private String telefono;
-    private boolean estado;
+    private String estado;
 
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, String telefono, boolean estado) {
+    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, String telefono, String estado) {
         this.idPaciente = idPaciente;
         this.dni = dni;
         this.apellido = apellido;
@@ -67,37 +67,25 @@ public class Paciente {
     public String getTelefono() {
         return telefono;
     }
-    public boolean getEstado() {
-        return estado;
-    }
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    public Paciente(int dni, String apellido, String nombre, String domicilio, String telefono, boolean estado) {
-        this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
-        this.estado = estado;
-    }
-    
 
     @Override
     public String toString() {
         return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", estado=" + estado + '}';
     }
 
+    
     
     
     

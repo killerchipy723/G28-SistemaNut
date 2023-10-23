@@ -192,31 +192,40 @@ return dieta;
   }
  public void regTratamiento(JTextField nombre,JComboBox pac,JTextField fInicial,JTextField pInicial,JTextField pFinal,JTextField pObtenido,JTextField fFinal,JComboBox estado){
      String sql="INSERT INTO dieta (nombre,idPaciente, fechaInicial, pesoInicial,pesoFinal,pesoObtenido,fechaFinal, estado)"
-             + " VALUES(?,?,?,?,?,?,?)";
+             + " VALUES(?,?,?,?,?,?,?,?)";
         try {
             int paciente = pac.getSelectedIndex();
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, nombre.getText());
             pst.setInt(2,paciente+1);
-            pst.setString(3, fInicial.getText());
-            pst.setString(4, pInicial.getText());
-            pst.setString(5, pFinal.getText());
-             pst.setInt(6, Integer.parseInt(pObtenido.getText()));
-            pst.setString(7, fFinal.getText());
+            pst.setDate(3, Date.valueOf(fInicial.getText()));
+            pst.setDouble(4, Double.parseDouble(pInicial.getText()));
+            pst.setDouble(5, Double.parseDouble(pFinal.getText()));
+             pst.setDouble(6, Double.parseDouble(pObtenido.getText()));
+            pst.setDate(7, Date.valueOf(fFinal.getText()));
             pst.setString(8, estado.getSelectedItem().toString());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Registro Guardado Exitosamente");
             
             
-        } catch (SQLException ex) {
+        
+        
+        
+        }catch(SQLException ex){
+            
             JOptionPane.showMessageDialog(null,"Error al Conectar a la tabla Dieta"+ex.toString());
-        
-        
-        
         }
+        
+        
        
         
 }
+ 
+ public void modificarTratamiento(){
+     
+ }
+ 
+ 
 }
 
 //Se necesita listar los pacientes que a la fecha de fin no han llegado al peso buscado.
