@@ -67,11 +67,12 @@ public class formPrincipal extends javax.swing.JFrame {
    DietacomidaData dc = new DietacomidaData();
    Reports repo = new Reports();
    
+   
   
     public formPrincipal() {
         initComponents();
         mostrarFecha();
-        
+        //ud.validar(txtDni, txtPass, lblUsuario);
         //txtidPacienteTratamiento.setVisible(false);
         txtPesoObtenido.setText("0");
         desabilitarFormTratamiento();
@@ -239,7 +240,7 @@ public class formPrincipal extends javax.swing.JFrame {
         radioNO = new javax.swing.JRadioButton();
         radioAc = new javax.swing.JRadioButton();
         jButton5 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestión de Pacientes - Centro Integral de Nutrición");
@@ -388,7 +389,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(92, 92, 92))
         );
@@ -413,7 +414,7 @@ public class formPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pacientes", jPanel2);
@@ -1153,12 +1154,12 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 970, 510));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Centro Integral de Nutrición Dra. Fernanda Salazar");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 7, 970, 20));
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(0, 102, 0));
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuario.setText("Centro Integral de Nutrición Dra. Fernanda Salazar");
+        lblUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 7, 970, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1886,7 +1887,6 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1910,6 +1910,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblDieta;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JRadioButton radioAc;
     private javax.swing.JRadioButton radioNO;
     private javax.swing.JRadioButton radioOK;
