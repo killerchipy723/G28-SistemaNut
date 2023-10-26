@@ -10,11 +10,14 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 UsuarioData ud = new UsuarioData();
+String user;
+public static String envia = "";
    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        setIconImage(getImageIcon());   
+        setIconImage(getImageIcon()); 
+        
     }
     public Image getImageIcon(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/icono.png"));
@@ -158,18 +161,22 @@ UsuarioData ud = new UsuarioData();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(txtUsuario.getText().isEmpty()|| String.valueOf(txtPass.getPassword()).isEmpty()){
+      
+           if(txtUsuario.getText().isEmpty()|| String.valueOf(txtPass.getPassword()).isEmpty()){
             JOptionPane.showMessageDialog(this,"Por Favor completa los campos requeridos");
            limpiar();
         }else{
             ud.validar(txtUsuario, txtPass,lbl);
+            envia = lbl.getText();
+            System.out.println(""+user);
             new formPrincipal().setVisible(true);
             this.dispose();
-        }
-            
+        } 
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+public void capturar(String user){
+    
+}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
