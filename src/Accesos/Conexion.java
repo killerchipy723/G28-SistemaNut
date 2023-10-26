@@ -44,7 +44,7 @@ public class Conexion {
         } 
         catch (ClassNotFoundException | SQLException e) 
         {
-            JOptionPane.showMessageDialog(null,"Error al crear la conexión "+e.getMessage());
+            JOptionPane.showMessageDialog(null,"Para iniciar el sistema debe levantar los servidores de XAMP ");
             
             throw new RuntimeException("Error al crear la conexión");
         }

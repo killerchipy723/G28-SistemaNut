@@ -234,7 +234,7 @@ public class Reports {
         if(rs.next()){
           
           do{
-                 tabla.addCell(rs.getString(1));
+              tabla.addCell(rs.getString(1));
                  tabla.addCell(rs.getString(2));
                   tabla.addCell(rs.getString(3));
                    tabla.addCell(rs.getString(4));
