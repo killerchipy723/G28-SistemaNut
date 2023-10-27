@@ -1308,7 +1308,7 @@ public class formPrincipal extends javax.swing.JFrame {
             limpiarTratamiento();
             consultas.llenarTablaTratamiento(tablaTratamiento);
             } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(null,"Formato de Fecha Incorrecto");
+                JOptionPane.showMessageDialog(null,"Formato de Fecha Incorrecto. Debe ingresar YYYY-MM-DD");
             }
             
             
