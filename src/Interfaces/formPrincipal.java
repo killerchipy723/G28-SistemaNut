@@ -545,6 +545,11 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jButton9.setText("Salir");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/comida.png"))); // NOI18N
 
@@ -856,6 +861,11 @@ public class formPrincipal extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jButton6.setText("Salir");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         comboDietaTratamiento.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1564,6 +1574,18 @@ public class formPrincipal extends javax.swing.JFrame {
         Dd.listaDieta(comboDieta);
         
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+             if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?","Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+           this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+            if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?","Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+           this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void limpiarComida(){
         txtNombreComida.setText("");
